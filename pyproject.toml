@@ -1,0 +1,62 @@
+[project]
+name = "sanitiser"
+version = "0.1.0"
+description = "Command-line tool to replace sensitive terms in a text stream."
+readme = "README.md"
+authors = [
+    { name = "Stephen P Cook", email = "s.cook4@exeter.ac.uk" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "pyyaml>=6.0.2",
+]
+
+[project.scripts]
+sanitiser = "sanitiser:main"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules"
+
+[tool.ruff.lint]
+select = [
+  "E", # pycodestyle
+  "F", # Pyflakes
+  "I", # isort
+  "UP", # pyupgrade
+  "B", # flake8-bugbear
+  "SIM", # flake8-simplify
+  "W", # pycodestyle
+  "ANN", # flake8-annotations
+  "ASYNC", #flake8-async
+  "A", # flake8-builtins
+  "C4", # flake8-comprehensions
+  "ISC", # flake8-implicit-str-concat
+  "ICN", # flake8-import-conventions
+  "PT", # flake8-pytest-style
+  "RET", # flake8-return
+  "ARG", # flake8-unused-arguments
+  "R", # refactor
+  "W", # warnings
+  "PERF", #perflint
+  "RUF", # ruff
+]
+
+[tool.ruff.lint.per-file-ignores]
+# ignores for the test files explicitly
+"tests/*" = [
+  "ANN201", # Missing return type annotation
+]
+
+[tool.deptry.package_module_name_map]
+pyyaml = "yaml"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.1.0",
+    "pytest>=8.3.5",
+    "ruff>=0.9.10",
+]
