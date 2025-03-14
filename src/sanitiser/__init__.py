@@ -6,6 +6,9 @@ from typing import TextIO
 
 from sanitiser.handle_links import strip_links
 from sanitiser.sanitise_words import get_word_maps
+from sanitiser.version import __version__
+
+__all__ = ["__version__", "main", "sanitise_text"]
 
 
 def sanitise_text(
@@ -26,6 +29,9 @@ def sanitise_text(
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--version", action="version", version=f"%(prog)s {__version__}"
+    )
     parser.add_argument(
         "--hyperlinks", action=argparse.BooleanOptionalAction, default=False
     )
