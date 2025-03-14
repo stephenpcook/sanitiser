@@ -1,6 +1,7 @@
 import argparse
 import re
 import sys
+from pathlib import Path
 from typing import TextIO
 
 from sanitiser.handle_links import strip_links
@@ -28,6 +29,7 @@ def main() -> None:
     parser.add_argument(
         "--hyperlinks", action=argparse.BooleanOptionalAction, default=False
     )
+    parser.add_argument("--word-map-directory", type=Path, action="append")
 
     parser.add_argument(
         "infile", nargs="?", type=argparse.FileType("r"), default=sys.stdin

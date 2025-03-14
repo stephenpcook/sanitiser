@@ -24,7 +24,13 @@ cat example.org | uvx sanitise
 
 ## Configuration
 
-Sensitive words are stored in yaml files, by default in `src/sanitiser/maps`.
+Sensitive words are stored in yaml files.
+The program looks for files in the following locations:
+
+- `src/sanitiser/maps`
+- `~/.local/share/sanitiser/maps`
+- `./maps`
+
 A typical configuration file contains a map:
 
 ```yaml
