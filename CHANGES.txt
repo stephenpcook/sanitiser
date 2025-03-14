@@ -1,0 +1,10 @@
+# 2025-03-14
+
+Version 0.1.1:
+
+- Get word maps from `~/.local/share/sanitiser/maps`.
+- Allow user to specify directories for word maps.
+
+# 2025-03-11
+
+Initial version.
