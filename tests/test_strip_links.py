@@ -5,7 +5,7 @@ def test_strip_link():
     text = "[[http://www.example.org]]"
 
     stripped_text = strip_orgmode_links(text)
-    expected_out = "[[link]]"
+    expected_out = "link"
 
     assert stripped_text == expected_out
 
@@ -19,8 +19,8 @@ def test_strip_link_with_description():
 
     expected_out = """
     Header:
-    [[link]]
-    [[link]]
+    link
+    link
     """
 
     assert strip_orgmode_links(text_with_link) == expected_out
@@ -32,7 +32,7 @@ def test_strip_link_two_on_one_line():
     """
 
     expected_out = """
-    [[link]] [[link]]
+    link link
     """
 
     assert strip_orgmode_links(text_with_link) == expected_out

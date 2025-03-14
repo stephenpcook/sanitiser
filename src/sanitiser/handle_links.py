@@ -5,7 +5,7 @@ def strip_links(text: str) -> str:
     """Replace links in text.
 
     >>> strip_links("[[https://www.example.org][example]] http://x.org")
-    '[[link]] link'
+    'link link'
     """
     text = strip_orgmode_links(text)
     return strip_raw_links(text)
@@ -24,6 +24,6 @@ def strip_orgmode_links(text: str) -> str:
     """Replace org-mode links in text.
 
     >>> strip_orgmode_links("[[https://www.example.org][example]]")
-    '[[link]]'
+    'link'
     """
-    return re.sub(r"\[\[[^\]]*\](\[[^\]]*\])?\]", "[[link]]", text)
+    return re.sub(r"\[\[[^\]]*\](\[[^\]]*\])?\]", "link", text)
