@@ -1,5 +1,9 @@
 # Release History
 
+## 0.1.3: (2025-05-30)
+
+- Handle links with angle brackets.
+
 ## 0.1.2: (2025-03-14)
 
 - Remove square braces from output links.
