@@ -48,3 +48,11 @@ def test_strip_link_angle_brackets():
     """
 
     assert strip_links(text_with_link) == expected_out
+
+
+def test_not_stripping_dates():
+    text_with_date = """
+    <1970-01-01 Thu>
+    """
+
+    assert strip_links(text_with_date) == text_with_date

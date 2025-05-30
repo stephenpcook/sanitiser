@@ -24,10 +24,14 @@ def strip_raw_links(text: str) -> str:
 def strip_angle_bracket_links(text: str) -> str:
     """Replace angle-bracket links in text.
 
+    Don't replace dates (typical format in org-mode).
+
     >>> strip_angle_bracket_links("<https://www.example.org>")
     'link'
+    >>> strip_angle_bracket_links("<1970-01-01 Thu>")
+    '<1970-01-01 Thu>'
     """
-    return re.sub(r"<[^>]*>", "link", text)
+    return re.sub(r"<((http(s)?:\/\/)|(www))[^>]*>", "link", text)
 
 
 def strip_orgmode_links(text: str) -> str:
