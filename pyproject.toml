@@ -1,6 +1,6 @@
 [project]
 name = "sanitiser"
-version = "0.1.3"
+version = "0.1.4"
 description = "Command-line tool to replace sensitive terms in a text stream."
 readme = "README.md"
 authors = [

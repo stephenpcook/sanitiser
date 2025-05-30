@@ -1,5 +1,9 @@
 # Release History
 
+## 0.1.4: (2025-05-30)
+
+- Make angle bracket link detection more strict.
+
 ## 0.1.3: (2025-05-30)
 
 - Handle links with angle brackets.
