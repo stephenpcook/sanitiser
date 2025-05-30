@@ -1,10 +1,10 @@
-from sanitiser.handle_links import strip_orgmode_links
+from sanitiser.handle_links import strip_links
 
 
 def test_strip_link():
     text = "[[http://www.example.org]]"
 
-    stripped_text = strip_orgmode_links(text)
+    stripped_text = strip_links(text)
     expected_out = "link"
 
     assert stripped_text == expected_out
@@ -23,7 +23,7 @@ def test_strip_link_with_description():
     link
     """
 
-    assert strip_orgmode_links(text_with_link) == expected_out
+    assert strip_links(text_with_link) == expected_out
 
 
 def test_strip_link_two_on_one_line():
@@ -35,4 +35,16 @@ def test_strip_link_two_on_one_line():
     link link
     """
 
-    assert strip_orgmode_links(text_with_link) == expected_out
+    assert strip_links(text_with_link) == expected_out
+
+
+def test_strip_link_angle_brackets():
+    text_with_link = """
+    <http://www.example.org>
+    """
+
+    expected_out = """
+    link
+    """
+
+    assert strip_links(text_with_link) == expected_out
