@@ -42,6 +42,7 @@ example:
 - passwords:
     abc123: xxx
     123abc: XXX
+    '@example.com': '@ex.co'
 ```
 
 With this configuration file, `my_username`, `abc123` and `123abc` would be
