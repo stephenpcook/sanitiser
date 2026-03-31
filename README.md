@@ -1,11 +1,11 @@
-# Sanitise
+# Sanitiser
 
 Clear sensitive words from text input.
 
 ## Install
 
 ```sh
-uv tool install sanitise/
+uv tool install sanitiser/
 ```
 
 ## Run
@@ -13,13 +13,13 @@ uv tool install sanitise/
 Can be run with a file input:
 
 ```sh
-uvx sanitise example.org > clean_example.org
+uvx sanitiser example.org > clean_example.org
 ```
 
 or with piped text:
 
 ```sh
-cat example.org | uvx sanitise
+cat example.org | uvx sanitiser
 ```
 
 ## Configuration
@@ -34,7 +34,7 @@ The program looks for files in the following locations:
 A typical configuration file contains a map:
 
 ```yaml
-# src/sanitise/maps/example.yaml
+# src/sanitiser/maps/example.yaml
 ---
 example:
 - usernames:
