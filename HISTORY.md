@@ -1,5 +1,10 @@
 # Release History
 
+## 0.1.5: (2026-04-22)
+
+- Add ability to report map paths and files.
+- Add --count and --check to report number of changes.
+
 ## 0.1.4: (2025-05-30)
 
 - Make angle bracket link detection more strict.
