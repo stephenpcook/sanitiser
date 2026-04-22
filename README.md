@@ -6,6 +6,8 @@ Stephen P. Cook 2026
 
 ## Install
 
+Installation recommended through [uv](https://docs.astral.sh/uv/).
+
 ```sh
 uv tool install sanitiser/
 ```

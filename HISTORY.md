@@ -1,5 +1,9 @@
 # Release History
 
+## 0.2.0: (2026-04-22)
+
+- Add MIT license.
+
 ## 0.1.5: (2026-04-22)
 
 - Add ability to report map paths and files.
