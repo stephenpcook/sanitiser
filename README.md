@@ -2,6 +2,8 @@
 
 Clear sensitive words from text input.
 
+Stephen P. Cook 2026
+
 ## Install
 
 ```sh

@@ -6,6 +6,8 @@ readme = "README.md"
 authors = [
     { name = "Stephen P Cook", email = "s.cook4@exeter.ac.uk" }
 ]
+license = "MIT"
+license-files = ["LICEN[CS]E.*"]
 requires-python = ">=3.13"
 dependencies = [
     "pyyaml>=6.0.2",
