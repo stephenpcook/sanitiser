@@ -11,30 +11,50 @@ THIS_DIR = Path(__file__).parent
 logger = logging.getLogger(__name__)
 
 
-def get_word_maps(config_paths: list[Path] | None = None) -> ChainMap[str, str]:
-    """Extract all word maps from all configuration locations."""
+def get_config_dirs(config_paths: list[Path] | None = None) -> list[Path]:
+    """Return config directories which exist."""
+    DEFAULT_CONFIG_PATHS = [
+        THIS_DIR / "maps",
+        Path.home() / ".local/share/sanitiser/maps",
+        Path.cwd() / "maps",
+    ]
     if config_paths is None:
-        config_paths = [
-            THIS_DIR / "maps",
-            Path.home() / ".local/share/sanitiser/maps",
-            Path.cwd() / "maps",
-        ]
+        config_paths = []
 
-    all_maps = ChainMap()
+    for path in DEFAULT_CONFIG_PATHS:
+        if path not in config_paths:
+            config_paths.append(path)
+
+    return list(filter(lambda f: f.exists() and f.is_dir(), config_paths))
+
+
+def get_word_maps(custom_config_paths: list[Path] | None = None) -> ChainMap[str, str]:
+    """Extract all word maps from all configuration locations."""
+    config_paths = get_config_dirs(custom_config_paths)
+
+    all_maps: ChainMap[str, str] = ChainMap()
 
     for path in config_paths:
-        if path.exists():
-            maps = word_map_from_dir(path)
-            if maps:
-                all_maps = all_maps.new_child(maps)
+        if not path.exists():
+            continue
+        maps = word_map_from_dir(path)
+        if maps:
+            all_maps = all_maps.new_child(maps)
     return all_maps
+
+
+def get_config_files(custom_config_paths: list[Path] | None = None) -> list[Path]:
+    """Get yaml files contained in a list of directories"""
+    config_dirs = get_config_dirs(custom_config_paths)
+    yaml_files = (chain(d.glob("*.yaml"), d.glob("*.yml")) for d in config_dirs)
+    return list(chain.from_iterable(yaml_files))
 
 
 def word_map_from_dir(root: Path | None = None) -> ChainMap[str, str]:
     """Extract all word maps from a directory of yaml files."""
     if root is None:
         root = THIS_DIR / "maps"
-    word_maps = ChainMap({})
+    word_maps: ChainMap[str, str] = ChainMap({})
     if not root.is_dir():
         msg = "Expected directory:"
         logger.error(msg)

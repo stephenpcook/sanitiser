@@ -31,6 +31,14 @@ The program looks for files in the following locations:
 - `~/.local/share/sanitiser/maps`
 - `./maps`
 
+Additional locations can be specified with the argument `--word-map-directory`,
+which can be used multiple times.
+These search paths, and any yaml files present, can be seen with
+
+```bash
+uvx sanitiser --show-map-paths
+```
+
 A typical configuration file contains a map:
 
 ```yaml
